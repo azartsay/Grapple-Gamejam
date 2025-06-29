@@ -34,7 +34,7 @@ public class PlayerData : ScriptableObject
 	[Header("Jump")]
 	public float jumpHeight; //Height of the player's jump
 	public float jumpTimeToApex; //Time between applying the jump force and reaching the desired jump height. These values also control the player's gravity and jump force.
-	[HideInInspector] public float jumpForce; //The actual force applied (upwards) to the player when they jump.
+	public float jumpForce; //The actual force applied (upwards) to the player when they jump.
 
 	[Header("Both Jumps")]
 	public float jumpCutGravityMult; //Multiplier to increase gravity if the player releases thje jump button while still jumping
@@ -83,7 +83,7 @@ public class PlayerData : ScriptableObject
     private void OnValidate()
     {
 		//Calculate gravity strength using the formula (gravity = 2 * jumpHeight / timeToJumpApex^2) 
-		if (jumpTimeToApex !<= 0) gravityStrength = -(2 * jumpHeight) / (jumpTimeToApex * jumpTimeToApex);
+		if (jumpTimeToApex > 0) gravityStrength = -(2 * jumpHeight) / (jumpTimeToApex * jumpTimeToApex);
 		
 		//Calculate the rigidbody's gravity scale (ie: gravity strength relative to unity's gravity value, see project settings/Physics2D)
 		if(Physics2D.gravity.y != 0) gravityScale = gravityStrength / Physics2D.gravity.y;
@@ -93,7 +93,7 @@ public class PlayerData : ScriptableObject
 		runDeccelAmount = (50 * runDecceleration) / runMaxSpeed;
 
 		//Calculate jumpForce using the formula (initialJumpVelocity = gravity * timeToJumpApex)
-		jumpForce = Mathf.Abs(gravityStrength) * jumpTimeToApex;
+		//jumpForce = Mathf.Abs(gravityStrength) * jumpTimeToApex;
 
 		#region Variable Ranges
 		runAcceleration = Mathf.Clamp(runAcceleration, 0.01f, runMaxSpeed);

@@ -73,11 +73,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
 	{
+		
         inputActions = new InputSystem_Actions();
         inputActions.Enable();
         RB = GetComponent<Rigidbody2D>();
-		//AnimHandler = GetComponent<PlayerAnimator>();
-	}
+        //AnimHandler = GetComponent<PlayerAnimator>();
+    }
 
     private void OnDisable() {
         inputActions.Disable();
@@ -219,16 +220,16 @@ public class PlayerMovement : MonoBehaviour
             SetGravityScale(Data.gravityScale * Data.jumpCutGravityMult);
             RB.linearVelocity = new Vector2(RB.linearVelocity.x, Mathf.Max(RB.linearVelocity.y, -Data.maxFallSpeed));
         }
-        else if ((IsJumping || IsWallJumping || _isJumpFalling) && Mathf.Abs(RB.linearVelocity.y) < Data.jumpHangTimeThreshold) {
-            SetGravityScale(Data.gravityScale * Data.jumpHangGravityMult);
-        }
-        else if (RB.linearVelocity.y < 0) {
-            //Higher gravity if falling
-            SetGravityScale(Data.gravityScale * Data.fallGravityMult);
-            //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
-            RB.linearVelocity = new Vector2(RB.linearVelocity.x, Mathf.Max(RB.linearVelocity.y, -Data.maxFallSpeed));
-        }
-        else {
+		else if ((IsJumping || IsWallJumping || _isJumpFalling) && Mathf.Abs(RB.linearVelocity.y) < Data.jumpHangTimeThreshold) {
+			SetGravityScale(Data.gravityScale * Data.jumpHangGravityMult);
+		}
+		else if (RB.linearVelocity.y < 0) {
+			//Higher gravity if falling
+			SetGravityScale(Data.gravityScale * Data.fallGravityMult);
+			//Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
+			RB.linearVelocity = new Vector2(RB.linearVelocity.x, Mathf.Max(RB.linearVelocity.y, -Data.maxFallSpeed));
+		}
+		else {
             //Default gravity if standing on a platform or moving upwards
             SetGravityScale(Data.gravityScale);
         }
@@ -290,11 +291,11 @@ public class PlayerMovement : MonoBehaviour
 
 		#region Add Bonus Jump Apex Acceleration
 		//Increase are acceleration and maxSpeed when at the apex of their jump, makes the jump feel a bit more bouncy, responsive and natural
-		if ((IsJumping || IsWallJumping || _isJumpFalling) && Mathf.Abs(RB.linearVelocity.y) < Data.jumpHangTimeThreshold)
-		{
-			accelRate *= Data.jumpHangAccelerationMult;
-			targetSpeed *= Data.jumpHangMaxSpeedMult;
-		}
+		//if ((IsJumping || IsWallJumping || _isJumpFalling) && Mathf.Abs(RB.linearVelocity.y) < Data.jumpHangTimeThreshold)
+		//{
+		//	accelRate *= Data.jumpHangAccelerationMult;
+		//	targetSpeed *= Data.jumpHangMaxSpeedMult;
+		//}
 		#endregion
 
 		#region Conserve Momentum
