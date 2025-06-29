@@ -14,6 +14,7 @@ public class GrappleHook : MonoBehaviour
     public GrappleRope rope;
     public float groundCheckRadius;
     public LayerMask ground;
+    public float grappleRange;
 
     public float spinStrength = 10;
 
@@ -40,12 +41,14 @@ public class GrappleHook : MonoBehaviour
 
     private void Update()
     {
+        
         if (pauseManager.isPaused) return;
 
         if (inputActions.Player.Grapple.WasPressedThisFrame() && !isHooked)
         {
-            // Raycast from mouse pos to check if Grappable was hit
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector2.zero, Mathf.Infinity, grappableLayer);
+            // Raycast player in direction of mouse for a range to look for grappable
+            Vector2 direction = (Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - transform.position).normalized;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, grappleRange, grappableLayer);
             if(hit.collider != null)
             {
                 AttachHook(hit.collider.gameObject);
@@ -69,7 +72,7 @@ public class GrappleHook : MonoBehaviour
             currentPullSpeed = pullSpeed;
         }
 
-        // Checks if the player toches the ground -> releases hook
+        // Checks if the player touches the ground -> releases hook
         if(Physics2D.OverlapCircle(transform.position, groundCheckRadius, ground))
         {
             ReleaseHook();
