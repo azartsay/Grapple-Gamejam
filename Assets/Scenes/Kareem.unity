@@ -3174,6 +3174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 52cc06217cf52470f9cde1d1a523805d, type: 2}
+  hook: {fileID: 1006508057}
   _groundCheckPoint: {fileID: 1949818499}
   _groundCheckSize: {x: 0.49, y: 0.11}
   _frontWallCheckPoint: {fileID: 1720683336}
@@ -3261,6 +3262,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   rope: {fileID: 1722095663}
+  groundCheckRadius: 0.8
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
   grapplePoint: {x: 0, y: 0}
 --- !u!233 &1006508058
 HingeJoint2D:

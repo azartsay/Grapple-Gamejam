@@ -12,6 +12,8 @@ public class GrappleHook : MonoBehaviour
     private Rigidbody2D rb;
     public LayerMask grappableLayer;
     public GrappleRope rope;
+    public float groundCheckRadius;
+    public LayerMask ground;
 
     [HideInInspector] public Vector2 grapplePoint;
 
@@ -44,11 +46,9 @@ public class GrappleHook : MonoBehaviour
             
         }
 
-        if (isHooked && inputActions.Player.Grapple.WasReleasedThisFrame())
+        if (inputActions.Player.Grapple.WasReleasedThisFrame())
         {
             ReleaseHook();
-            currentPullSpeed = pullSpeed;
-            rope.enabled = false;
         }
 
         if (isHooked && inputActions.Player.Sprint.IsPressed())
@@ -59,6 +59,12 @@ public class GrappleHook : MonoBehaviour
         if(isHooked && inputActions.Player.Sprint.WasReleasedThisFrame())
         {
             currentPullSpeed = pullSpeed;
+        }
+
+        // Checks if the player toches the ground -> releases hook
+        if(Physics2D.OverlapCircle(transform.position, groundCheckRadius, ground))
+        {
+            ReleaseHook();
         }
     }
 
@@ -81,14 +87,19 @@ public class GrappleHook : MonoBehaviour
         hinge.anchor = anchorVector;
     }
 
-    private void ReleaseHook()
+    public void ReleaseHook()
     {
+        if (!isHooked)
+            return;
         isHooked = false;
         hinge.enabled = false;
         hinge.connectedBody = null;
 
         transform.up = Vector3.up;
         rb.freezeRotation = true;
+
+        currentPullSpeed = pullSpeed;
+        rope.enabled = false;
     }
 
     private void PullHook()
@@ -97,6 +108,7 @@ public class GrappleHook : MonoBehaviour
         // TODO: Test put how its like if the pulling was exponential instead
         if (hinge.anchor.y >= minRopeLength)
         {
+            hinge.autoConfigureConnectedAnchor = false;
             hinge.anchor -= new Vector2(0, currentPullSpeed) * Time.deltaTime;
         }
     }

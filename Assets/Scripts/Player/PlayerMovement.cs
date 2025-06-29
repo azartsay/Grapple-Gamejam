@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
 	#region COMPONENTS
     public Rigidbody2D RB { get; private set; }
+	public GrappleHook hook;
 	//Script to handle all player animations, all references can be safely removed if you're importing into your own project.
 	//public PlayerAnimator AnimHandler { get; private set; }
 	#endregion
@@ -136,6 +137,7 @@ public class PlayerMovement : MonoBehaviour
         #region COLLISION CHECKS
         if (!IsJumping)
 		{
+			hook.ReleaseHook();
 			//Ground Check
 			if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer)) //checks if set box overlaps with ground
 			{
