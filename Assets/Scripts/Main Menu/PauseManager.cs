@@ -33,6 +33,9 @@ public class PauseManager : MonoBehaviour {
         if (inputActions.Player.Pause.WasPressedThisFrame()) {
             Pause();
         }
+        if (inputActions.Player.Reset.WasPressedThisFrame()) {
+            ResetLevel(); 
+        }
     }
     public void Pause() {
         isPaused = !isPaused;
@@ -74,7 +77,10 @@ public class PauseManager : MonoBehaviour {
         SceneManager.LoadScene(levelToLoad);
     }
     public void ResetLevel() {
-        Pause();
+
+        if (isPaused) Pause();
+        
+
         SceneManager.LoadScene(levelToReset);
     }
 }
