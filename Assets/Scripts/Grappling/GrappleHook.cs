@@ -5,7 +5,7 @@ public class GrappleHook : MonoBehaviour
 {
     public InputSystem_Actions inputActions;
     private HingeJoint2D hinge;
-    private bool isHooked = false;
+    public bool isHooked = false;
     public float pullSpeed = 2f;
     private float currentPullSpeed;
     public float minRopeLength = 2f;

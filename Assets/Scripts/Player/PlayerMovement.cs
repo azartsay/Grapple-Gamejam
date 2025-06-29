@@ -99,7 +99,14 @@ public class PlayerMovement : MonoBehaviour
 		LastOnWallLeftTime -= Time.deltaTime;
 
 		LastPressedJumpTime -= Time.deltaTime;
-        #endregion
+		#endregion
+
+		if (GetComponent<GrappleHook>().isHooked)
+		{
+			SetGravityScale(Data.gravityScale);
+            return;
+        }
+			
 
         #region INPUT HANDLER
         //_moveInput.x = Input.GetAxisRaw("Horizontal");
@@ -238,6 +245,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
 	{
+		if (GetComponent<GrappleHook>().isHooked)
+			return;
         if (IsWallJumping) Run(Data.wallJumpRunLerp);
 
         else Run(1);
