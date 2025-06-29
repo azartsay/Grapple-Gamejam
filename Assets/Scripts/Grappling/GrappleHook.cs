@@ -15,6 +15,12 @@ public class GrappleHook : MonoBehaviour
     public float groundCheckRadius;
     public LayerMask ground;
 
+    public float spinStrength = 10;
+
+    private Vector2 moveInput;
+
+    [SerializeField] private PauseManager pauseManager;
+
     [HideInInspector] public Vector2 grapplePoint;
 
     private void Awake()
@@ -34,6 +40,8 @@ public class GrappleHook : MonoBehaviour
 
     private void Update()
     {
+        if (pauseManager.isPaused) return;
+
         if (inputActions.Player.Grapple.WasPressedThisFrame() && !isHooked)
         {
             // Raycast from mouse pos to check if Grappable was hit
@@ -65,6 +73,10 @@ public class GrappleHook : MonoBehaviour
         if(Physics2D.OverlapCircle(transform.position, groundCheckRadius, ground))
         {
             ReleaseHook();
+        }
+
+        if (isHooked && inputActions.Player.Move.IsPressed()) {
+            MoveWhileHooked();
         }
     }
 
@@ -116,5 +128,11 @@ public class GrappleHook : MonoBehaviour
     public Vector2 GetRopeLength()
     {
         return grapplePoint - (Vector2)transform.position;
+    }
+
+    public void MoveWhileHooked() {
+        moveInput = inputActions.Player.Move.ReadValue<Vector2>();
+        rb.AddTorque(moveInput.x * spinStrength);
+
     }
 }
