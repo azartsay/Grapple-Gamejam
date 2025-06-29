@@ -7,12 +7,13 @@ public class PauseManager : MonoBehaviour {
 
     [Header("Levels to load")]
     public string levelToLoad;
+    public string levelToReset;
 
 
     public GameObject pauseMenu;
 
     private InputSystem_Actions inputActions;
-    private bool isPaused = false;
+    public bool isPaused = false;
 
     [SerializeField] private TimeManager timeManager;
 
@@ -71,5 +72,9 @@ public class PauseManager : MonoBehaviour {
     public void LoadMenu() {
         Pause();
         SceneManager.LoadScene(levelToLoad);
+    }
+    public void ResetLevel() {
+        Pause();
+        SceneManager.LoadScene(levelToReset);
     }
 }

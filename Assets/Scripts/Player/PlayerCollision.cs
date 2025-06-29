@@ -10,6 +10,18 @@ public class PlayerCollision : MonoBehaviour
             if (timeManager != null) {
                 timeManager.PauseTimer();
                 pauseManager.SaveTime();
+
+                pauseManager.ResetLevel();
+
+                if (pauseManager.isPaused) {
+                    pauseManager.Pause();
+                }
+            }
+        }
+
+        if (collision.CompareTag("Start")) {
+            if (timeManager != null) {
+                timeManager.isStarted = true;
             }
         }
     }

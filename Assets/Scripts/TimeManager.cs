@@ -7,8 +7,11 @@ public class TimeManager : MonoBehaviour {
     public float timeElapsed = 0f;
     private bool isRunning = true;
 
+    public bool isStarted = false;
+
     void Update() {
         if (!isRunning) return;
+        if (!isStarted) return;
 
         timeElapsed += Time.deltaTime;
 
