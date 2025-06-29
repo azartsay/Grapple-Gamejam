@@ -18,8 +18,6 @@ public class PlayerMovement : MonoBehaviour
     //just paste in all the parameters, though you will need to manually change all references in this script
     public PlayerData Data;
 
-	public Transform GrappleGun;
-
 	#region COMPONENTS
     public Rigidbody2D RB { get; private set; }
 	//Script to handle all player animations, all references can be safely removed if you're importing into your own project.
@@ -334,10 +332,6 @@ public class PlayerMovement : MonoBehaviour
 
 		IsFacingRight = !IsFacingRight;
 
-		//un-flip the gun
-		Vector3 gunScale = GrappleGun.localScale;
-		gunScale.x *= -1;
-		GrappleGun.localScale = gunScale;
 	}
     #endregion
 
