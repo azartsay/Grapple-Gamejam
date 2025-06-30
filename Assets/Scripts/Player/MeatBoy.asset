@@ -21,10 +21,10 @@ MonoBehaviour:
   runMaxSpeed: 20
   runAcceleration: 2
   runAccelAmount: 5
-  runDecceleration: 10
-  runDeccelAmount: 25
+  runDecceleration: 5
+  runDeccelAmount: 12.5
   accelInAir: 1
-  deccelInAir: 0.8
+  deccelInAir: 0.3
   doConserveMomentum: 1
   jumpHeight: 2.8
   jumpTimeToApex: 0.23
