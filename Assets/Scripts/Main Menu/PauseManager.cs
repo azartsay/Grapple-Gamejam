@@ -11,6 +11,7 @@ public class PauseManager : MonoBehaviour {
 
 
     public GameObject pauseMenu;
+    public GameObject Blur;
 
     private InputSystem_Actions inputActions;
     public bool isPaused = false;
@@ -40,6 +41,7 @@ public class PauseManager : MonoBehaviour {
     public void Pause() {
         isPaused = !isPaused;
         pauseMenu.SetActive(isPaused);
+        Blur.SetActive(isPaused);   
         Time.timeScale = isPaused ? 0f : 1f;
     }
 
