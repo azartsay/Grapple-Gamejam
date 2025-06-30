@@ -145,7 +145,6 @@ public class GrappleHook : MonoBehaviour
 
     private IEnumerator DelayedUnHook(float delay)
     {
-        Debug.Log("Releasing after: " + delay);
         yield return new WaitForSeconds(delay);
         isHooked = false;
     }
