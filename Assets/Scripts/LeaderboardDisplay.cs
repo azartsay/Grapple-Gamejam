@@ -5,7 +5,7 @@ using TMPro;
 public class LeaderboardDisplay : MonoBehaviour {
     public TextMeshProUGUI leaderboardText;  
 
-    private const int maxEntries = 10;
+    private const int maxEntries = 5;
 
     public void LoadAndDisplayTimes() {
         List<float> times = LoadTimes();
