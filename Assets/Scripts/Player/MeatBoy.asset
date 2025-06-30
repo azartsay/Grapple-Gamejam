@@ -12,29 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce57fa9e19eb403c9edd3e9487e6cc2, type: 3}
   m_Name: MeatBoy
   m_EditorClassIdentifier: 
-  gravityStrength: -105.86011
-  gravityScale: 10.79104
+  gravityStrength: -97.22222
+  gravityScale: 9.9105215
   fallGravityMult: 2
   maxFallSpeed: 25
   fastFallGravityMult: 2
   maxFastFallSpeed: 45
-  runMaxSpeed: 20
-  runAcceleration: 2
-  runAccelAmount: 5
-  runDecceleration: 5
-  runDeccelAmount: 12.5
+  runMaxSpeed: 12
+  runAcceleration: 1
+  runAccelAmount: 4.1666665
+  runDecceleration: 12
+  runDeccelAmount: 50
   accelInAir: 1
   deccelInAir: 0.3
   doConserveMomentum: 1
   jumpHeight: 2.8
-  jumpTimeToApex: 0.23
-  jumpForce: 40
+  jumpTimeToApex: 0.24
+  jumpForce: 35
   jumpCutGravityMult: 3
   jumpHangGravityMult: 0
   jumpHangTimeThreshold: 0
   jumpHangAccelerationMult: 0
   jumpHangMaxSpeedMult: 0
-  wallJumpForce: {x: 15, y: 30}
+  wallJumpForce: {x: 20, y: 25}
   wallJumpRunLerp: 0.75
   wallJumpTime: 0.2
   doTurnOnWallJump: 1
