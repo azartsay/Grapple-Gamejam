@@ -3,17 +3,28 @@ using UnityEngine;
 public class PlayerSounds : MonoBehaviour
 {
     public AudioClip[] footsteps;
-    private AudioSource source;
+    private AudioSource footSource;
+    public AudioSource hookSource;
+    public PlayerMovement movement;
 
     private void Start()
     {
-        source = GetComponent<AudioSource>();
+        footSource = GetComponent<AudioSource>();
     }
 
     public void PlaySound()
     {
-        int len = footsteps.Length;
-        source.clip = footsteps[Random.Range(0, len)];
-        source.Play();
+        if(movement.CanJump())
+        {
+            int len = footsteps.Length;
+            footSource.clip = footsteps[Random.Range(0, len)];
+            footSource.Play();
+        }
+        
+    }
+
+    public void PlayHookSound()
+    {
+        hookSource.Play();
     }
 }
