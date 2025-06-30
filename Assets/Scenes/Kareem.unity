@@ -4367,7 +4367,7 @@ MonoBehaviour:
     m_Bits: 64
   grappleRange: 20
   unHookDelay: 0.2
-  spinStrength: 100
+  spinStrength: 30
   pauseManager: {fileID: 539550348}
   grapplePoint: {x: 0, y: 0}
 --- !u!233 &1006508058
