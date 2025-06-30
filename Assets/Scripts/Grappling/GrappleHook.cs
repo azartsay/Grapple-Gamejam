@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class GrappleHook : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GrappleHook : MonoBehaviour
     public float groundCheckRadius;
     public LayerMask ground;
     public float grappleRange;
+    public float unHookDelay = 0.2f;
 
     public float spinStrength = 10;
 
@@ -106,7 +108,7 @@ public class GrappleHook : MonoBehaviour
     {
         if (!isHooked)
             return;
-        isHooked = false;
+        
         hinge.enabled = false;
         hinge.connectedBody = null;
 
@@ -115,6 +117,8 @@ public class GrappleHook : MonoBehaviour
 
         currentPullSpeed = pullSpeed;
         rope.enabled = false;
+
+        StartCoroutine(DelayedUnHook(unHookDelay));      
     }
 
     private void PullHook()
@@ -137,5 +141,12 @@ public class GrappleHook : MonoBehaviour
         moveInput = inputActions.Player.Move.ReadValue<Vector2>();
         rb.AddTorque(moveInput.x * spinStrength);
 
+    }
+
+    private IEnumerator DelayedUnHook(float delay)
+    {
+        Debug.Log("Releasing after: " + delay);
+        yield return new WaitForSeconds(delay);
+        isHooked = false;
     }
 }

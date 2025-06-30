@@ -4366,6 +4366,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   grappleRange: 20
+  unHookDelay: 0.2
   spinStrength: 100
   pauseManager: {fileID: 539550348}
   grapplePoint: {x: 0, y: 0}
