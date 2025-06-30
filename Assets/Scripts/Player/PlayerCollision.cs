@@ -24,5 +24,9 @@ public class PlayerCollision : MonoBehaviour
                 timeManager.isStarted = true;
             }
         }
+
+        if (collision.CompareTag("Teleport")) {
+            transform.position = collision.transform.GetChild(0).position;
+        }
     }
 }

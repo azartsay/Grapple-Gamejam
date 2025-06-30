@@ -6,6 +6,7 @@ TagManager:
   tags:
   - End
   - Start
+  - Teleport
   layers:
   - Default
   - TransparentFX
