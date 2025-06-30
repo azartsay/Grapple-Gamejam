@@ -3194,6 +3194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 723011910}
   - component: {fileID: 723011911}
+  - component: {fileID: 723011912}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -3271,6 +3272,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &723011912
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723011909}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b2e0bdd16ff3c4fbf9b033fd729898b9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &768283985
 GameObject:
   m_ObjectHideFlags: 0
@@ -4184,6 +4207,7 @@ GameObject:
   - component: {fileID: 1006508056}
   - component: {fileID: 1006508057}
   - component: {fileID: 1006508058}
+  - component: {fileID: 1006508059}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4371,6 +4395,19 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
+--- !u!114 &1006508059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006508049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1128316a88c4b598155c1e60ddc02e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 723011912}
 --- !u!1 &1019145902
 GameObject:
   m_ObjectHideFlags: 0
