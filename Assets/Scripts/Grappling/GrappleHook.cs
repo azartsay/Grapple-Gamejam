@@ -20,6 +20,8 @@ public class GrappleHook : MonoBehaviour
 
     public float spinStrength = 10;
 
+    public PlayerSounds sounds;
+
     private Vector2 moveInput;
 
     [SerializeField] private PauseManager pauseManager;
@@ -102,6 +104,8 @@ public class GrappleHook : MonoBehaviour
         float distance = Vector2.Distance(transform.position, grapplePoint);
         Vector2 anchorVector = new Vector2(0, distance);
         hinge.anchor = anchorVector;
+
+        sounds.PlayHookSound();
     }
 
     public void ReleaseHook()
