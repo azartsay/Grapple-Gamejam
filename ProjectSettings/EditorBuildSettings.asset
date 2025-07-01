@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 3c573fa4835ca14459716d73508aaad7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level1.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+    guid: beba2c3b522f6544e94527a51f61b369
+  - enabled: 0
     path: Assets/Scenes/Kareem.unity
     guid: b02f5f7e4a5da46c1a7fd8cf8227d642
   - enabled: 1

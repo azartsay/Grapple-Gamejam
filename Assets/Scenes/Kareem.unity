@@ -4687,6 +4687,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeManager: {fileID: 1617165207}
   pauseManager: {fileID: 539550348}
+  backGround: {fileID: 0}
+  backGroundTwo: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!114 &1006508057
 MonoBehaviour:
   m_ObjectHideFlags: 0
